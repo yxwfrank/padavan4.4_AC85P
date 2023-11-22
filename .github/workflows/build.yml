@@ -34,9 +34,9 @@ jobs:
       - name: Build
         run: |
           make ${{ matrix.target }} TOOLCHAIN=${{ matrix.toolchain }}
-          if [ "${{ matrix.target }}" = "RT-AC85P" ]; then
+          if [ "${{ matrix.target }}" = "K2P-NANO" ]; then
             image=$(ls trunk/images/*.trx)
-            mv $image $(echo $image | sed 's/RT-AC85P/')
+            mv $image $(echo $image | sed 's/K2P/K2P-NANO/')
           fi
       - uses: actions/upload-artifact@v3
         with:
