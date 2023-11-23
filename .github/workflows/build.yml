@@ -34,8 +34,7 @@ jobs:
           fakeroot kmod cpio bc zip git python3-docutils gettext automake autopoint \
           texinfo build-essential help2man pkg-config zlib1g-dev libgmp3-dev \
           libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget libc-dev-bin \
-          libxml2-dev libxslt-dev libxslt1-dev
-          sudo ln -s /usr/local/opt/libxml2/include/libxml2/libxml /usr/local/include/libxml
+          libxml2 libxml2-dev libxslt-dev libxslt1-dev
       - name: Build
         run: |
           make ${{ matrix.target }} TOOLCHAIN=${{ matrix.toolchain }}
