@@ -181,13 +181,13 @@ get_ipv4_address( const char* s, char* buf, size_t len )
     assert( s && buf && len );
 
     if( 1 == inet_aton(s, &(saddr.sin_addr)) ) {
-        (void) strncpy( buf, s, len );
+        (void) strncpy( buf, s, len - 1 );
     }
     else {
         rc = if2addr( s, (struct sockaddr*)&saddr, sizeof(saddr) );
         if( 0 != rc ) return rc;
 
-        (void) strncpy( buf, inet_ntoa(saddr.sin_addr), len );
+        (void) strncpy( buf, inet_ntoa(saddr.sin_addr), len - 1 );
     }
 
     buf[ len - 1 ] = 0;

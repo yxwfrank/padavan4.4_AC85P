@@ -605,10 +605,10 @@ int udpxrec_main( int argc, char* const argv[] )
                         else {
                             if( g_recopt.bg_time < now ) {
                                 (void)strncpy( now_buf, Zasctime(localtime( &now )),
-                                        sizeof(now_buf)-1 );
+                                        sizeof(now_buf) - 1 );
                                 (void)strncpy( sel_buf,
                                         Zasctime(localtime( &g_recopt.bg_time )),
-                                        sizeof(sel_buf)-1 );
+                                        sizeof(sel_buf) - 1 );
 
                                 (void) fprintf( stderr,
                                         "Selected %s time is in the past, "
@@ -635,10 +635,10 @@ int udpxrec_main( int argc, char* const argv[] )
                         else {
                             if( g_recopt.end_time < now ) {
                                 (void)strncpy( now_buf, Zasctime(localtime( &now )),
-                                        sizeof(now_buf)-1 );
+                                        sizeof(now_buf) - 1 );
                                 (void)strncpy( sel_buf,
                                         Zasctime(localtime( &g_recopt.end_time )),
-                                        sizeof(sel_buf)-1 );
+                                        sizeof(sel_buf) - 1 );
 
                                 (void) fprintf( stderr,
                                         "Selected %s time is in the past, "

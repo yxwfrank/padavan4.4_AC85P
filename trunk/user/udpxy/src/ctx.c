@@ -58,12 +58,12 @@ init_server_ctx( struct server_ctx* ctx,
 
     ctx->lsockfd = 0;
     (void) strncpy( ctx->listen_addr, (laddr ? laddr : IPv4_ALL),
-                    IPADDR_STR_SIZE );
+                    IPADDR_STR_SIZE - 1 );
     ctx->listen_addr[ IPADDR_STR_SIZE - 1 ] = '\0';
 
     ctx->listen_port = lport;
 
-    (void) strncpy( ctx->mcast_ifc_addr, mifc_addr, IPADDR_STR_SIZE );
+    (void) strncpy( ctx->mcast_ifc_addr, mifc_addr, IPADDR_STR_SIZE - 1 );
     ctx->mcast_ifc_addr[ IPADDR_STR_SIZE - 1 ] = '\0';
 
     ctx->cl = calloc(max, sizeof(struct client_ctx));
@@ -151,7 +151,7 @@ get_src_info( struct client_ctx* cl, int sockfd )
     }
 
     if( S_ISREG( st.st_mode ) ) {
-        (void) strncpy( cl->src_addr, "File", sizeof(cl->src_addr) );
+        (void) strncpy( cl->src_addr, "File", sizeof(cl->src_addr) - 1 );
         cl->src_addr[ sizeof(cl->src_addr) - 1 ] = '\0';
         cl->src_port = 0;
     }
@@ -195,7 +195,7 @@ add_client( struct server_ctx* ctx,
     client = &(ctx->cl[ index ]);
     client->pid = cpid;
 
-    (void) strncpy( client->mcast_addr, maddr, IPADDR_STR_SIZE );
+    (void) strncpy( client->mcast_addr, maddr, IPADDR_STR_SIZE - 1 );
     client->mcast_addr[ IPADDR_STR_SIZE - 1 ] = '\0';
 
     client->mcast_port = mport;

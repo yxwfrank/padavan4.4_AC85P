@@ -60,7 +60,7 @@ get_content_type(char *buf, size_t buflen)
     if (ev && *ev)
         (void) snprintf(buf, buflen-1, "Content-Type:%s", ev);
     else
-        strncpy(buf, DEFAULT_CONTENT_TYPE, buflen);
+        strncpy(buf, DEFAULT_CONTENT_TYPE, buflen - 1);
 
     buf[buflen - 1] = '\0';
 }

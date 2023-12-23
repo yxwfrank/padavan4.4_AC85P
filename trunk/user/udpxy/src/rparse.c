@@ -126,7 +126,7 @@ parse_param( const char* s, size_t slen,
     /* look for '?' separating options from tail */
     n = strcspn(s + i, "?");
     if (n < optlen) {
-        (void) strncpy( opt, s + i, n );
+        (void) strncpy( opt, s + i, n - 1 );
         opt[n] = '\0';
     }
     else
@@ -136,7 +136,7 @@ parse_param( const char* s, size_t slen,
     if (i >= slen) return 0;
 
     if (tail && tlen > 0) {
-        (void) strncpy(tail, s + i, tlen);
+        (void) strncpy(tail, s + i, tlen - 1);
         tail[tlen - 1] = '\0';
     }
 
@@ -175,7 +175,7 @@ parse_udprelay( const char*  opt, size_t optlen,
 
     assert( opt && s_addr && s_addrlen && addr && addrlen && port );
 
-    (void) strncpy( s, opt, MAX_OPTLEN-1 );
+    (void) strncpy( s, opt, MAX_OPTLEN - 1 );
     s[ MAX_OPTLEN - 1 ] = '\0';
 
     do {
@@ -196,7 +196,7 @@ parse_udprelay( const char*  opt, size_t optlen,
         if( !n || n >= optlen ) break;
         s[n] = '\0';
 
-        strncpy( addr, s, addrlen );
+        strncpy( addr, s, addrlen - 1 );
         addr[ addrlen - 1 ] ='\0';
 
         ++n;
